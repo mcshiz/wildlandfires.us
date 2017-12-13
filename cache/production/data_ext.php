@@ -1,4 +1,0 @@
-<?php exit; ?>
-1544666061
-836
-a:5:{s:16:"dmzx/formcreator";a:4:{s:8:"ext_name";s:16:"dmzx/formcreator";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:21:"ext/dmzx/formcreator/";}s:24:"phpbb/boardannouncements";a:4:{s:8:"ext_name";s:24:"phpbb/boardannouncements";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:29:"ext/phpbb/boardannouncements/";}s:16:"phpbb/mediaembed";a:4:{s:8:"ext_name";s:16:"phpbb/mediaembed";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:21:"ext/phpbb/mediaembed/";}s:11:"phpbb/pages";a:4:{s:8:"ext_name";s:11:"phpbb/pages";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:16:"ext/phpbb/pages/";}s:13:"phpbb/viglink";a:4:{s:8:"ext_name";s:13:"phpbb/viglink";s:10:"ext_active";s:1:"1";s:9:"ext_state";s:4:"b:0;";s:8:"ext_path";s:18:"ext/phpbb/viglink/";}}
