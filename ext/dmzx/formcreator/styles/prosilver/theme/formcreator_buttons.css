@@ -1,0 +1,6 @@
+.panel.bg2 .inner .submit-buttons {
+	display: none;
+}
+#format-buttons-new-home > button, #format-buttons-new-home > select, #format-buttons > button, #format-buttons > select{
+	margin-right: 3px;
+}
