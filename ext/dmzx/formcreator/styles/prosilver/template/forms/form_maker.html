@@ -30,20 +30,26 @@ function postform_check()
 			</dl>
 			{% endfor %}
 		</fieldset>
-		<div class="form_chk_msg">{{ lang('CHECKBOX_MSG') }}</div>
 	</div>
 	<div class="panels">
 		<div class="inner">
+			<!--<div>
+				<p class="add-to-map-text">We encourage everyone click on the "Add this fire to the map" button. Clicking this button will open up
+					another window where you will be presented with a form just like the one above. Filling out the second form will place this fire on our
+					<a href="http://www.wildlandfires.us/app.php/wildland-fire-map" target="_blank">Wildland Fire Map</a>. If you do not know the latitude or longitude of this fire you will be able to pick one from a map.</p>
+			</div> -->
 			<fieldset class="submit-buttons">
 				{{ S_FORM_TOKEN }}
 				<input type="button" class="button2" accesskey="f" name="useform" value="{{ lang('CLOSE_FORM') }}" style="font-weight:normal; width: 50px" onclick="toggle_forms()" title="{{ lang('CLOSE_FORM_EXPLAIN') }}" />
 				<input type="reset" name="reset" value="{{ lang('RESET') }}" class="button2" />
 				<input type="submit" accesskey="s" tabindex="6" name="post" value="{{ lang('SUBMIT') }}" class="button1 default-submit-action" onclick="return postform_check();" />
+				<!--<a href="https://survey123.arcgis.com/share/0ce026854ecf451ca156a72d935caffc" target="_blank" class="button add-to-map-button">
+					Add this fire to the map<i class="icon fa-external-link external-link"></i>
+				</a> -->
 			</fieldset>
 		</div>
 	</div>
 </div>
-
 <div id="lblValues"></div>
 
 <script type="text/javascript">
@@ -70,6 +76,8 @@ function toggle_validation()
 		document.forms.postform.noValidate=false;
 	}
 }
+
+
 // ]]>
 </script>
 {% endif %}

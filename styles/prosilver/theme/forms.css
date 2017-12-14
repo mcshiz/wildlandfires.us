@@ -427,3 +427,7 @@ input.search {
 .medium { width: 50%;}
 .narrow { width: 25%;}
 .tiny { width: 10%;}
+
+#location-description-text-area {
+	height:auto;
+}

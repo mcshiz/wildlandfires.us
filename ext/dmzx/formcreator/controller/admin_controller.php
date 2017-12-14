@@ -411,7 +411,7 @@ class admin_controller
 			}
             if ($row['format_buttons'] == '1')
             {
-                $format_buttons = '<span id="format-buttons-new-home">FORMAT FUCKERS</span>';
+                $format_buttons = '<span id="format-buttons-new-home"></span>';
             }
 			$this->template->assign_block_vars('form_apptemplate', array(
 				'NDX_ORDER' => $row['ndx_order'],

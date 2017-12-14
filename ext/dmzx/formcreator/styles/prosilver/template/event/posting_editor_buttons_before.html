@@ -1,5 +1,59 @@
 {% if MODE == 'post' %}
 <!--<button type="button" class="button" accesskey="f" name="useform" onclick="toggle_forms()" title="{{ lang('OPEN_FORM_EXPLAIN') }}" />{{ lang('OPEN_FORM') }}</button>-->
 {% elseif MODE == 'edit' %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var messageId = $('#message');
+        if(messageId.text().indexOf('[/fbox]') > -1) {
+            //used for bbcodes
+            window.text_name = 'new-message-box';
+            //idk what the hell is wrong with the form that I can't manually submit it so instead of capturing the
+            //event changing the message content then submitting I have to just add an event handler
+            $('#form_hide').find('.submit-buttons').find('input[name="post"]')[0].addEventListener('click', function(){copy_text()})
+            //hide the original version
+            messageId.hide();
+            if(messageId.text().indexOf('[/fbox][form]') > -1) {
+                //split each input to its own line if not already
+                messageId.text(messageId.text().replace(/\[\/fbox\]/g, '[/fbox]\n'))
+            }
+        }
+
+        var lines = messageId.text().split(/\[\/fbox\]\n?/g);
+        window.formcreator_labels = [], window.formcreator_values = [];
+        //loop through each line and get label, value and add it to a text box or input
+        for(var i = 0; i < lines.length -1; i++) {
+            lines[i] = lines[i] + "[/fbox]\n";
+            var labelFormatRegex = /\[form\]\[b\](.*)\[\/b\]\[\/form\]/g;
+            var label = labelFormatRegex.exec(lines[i])
+            formcreator_labels.push(label[1])
+            var valueFormatRegex = /\[fbox\]([\s\S]+)\[\/fbox\]/g;
+            var value = valueFormatRegex.exec(lines[i])
+            formcreator_values.push(value)
+            if(label[1] === "Other_Information:") {
+                $('#message-box').append('<span id="format-buttons-new-home"></span><br>');
+                $("#format-buttons").children().appendTo("#format-buttons-new-home");
+                $('#message-box').append('<b>'+label[1]+'</b>');
+                $('#message-box').append('<textarea data-form-name="'+label[1]+'" id="new-message-box">'+value[1]+'</textarea>')
+            } else if(label[1] === "Location_Description:" ) {
+                $('#message-box').append('<b>'+label[1]+'</b>');
+                $('#message-box').append('<textarea data-form-name="'+label[1]+'" id="location-description-text-area">'+value[1]+'</textarea>')
+            } else {
+                $('#message-box').append('<div class="form-editor-field"><span class="form-editor-span"><b>'+label[1]+'</span></b><input type="text" data-form-name="'+label[1]+ '" value="'+ value[1] +'" /></div>')
+            }
+        }
+
+    });
+
+    function copy_text() {
+        var newString = "";
+        for (var i = 0; i < formcreator_labels.length; i++) {
+            console.log(formcreator_labels[i])
+            var v = $('#message-box').find('*[data-form-name="' + formcreator_labels[i] + '"]').val();
+            newString += "[form][b]" + formcreator_labels[i] + "[/b][/form]" + "[fbox]" + v + "[/fbox]";
+        }
+        $('#message').text(newString)
+    }
+</script>
+
 <!-- may add edit in form option later -->
 {% endif %}

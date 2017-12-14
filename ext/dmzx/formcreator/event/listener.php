@@ -194,8 +194,15 @@ class listener implements EventSubscriberInterface
 
 			$size='size="40" ';
 			$maxlength = 'maxlength="255" ';
-			$cols='rows="10"';
-			$rows='cols="76"';
+			if($row['name'] == "Location_Description") {
+                $cols='rows="3"';
+                $rows='cols="76"';
+            } else {
+                $cols='rows="10"';
+                $rows='cols="76"';
+            }
+
+			$pattern = '';
 
 			switch (strtolower($row['type']))
 			{
@@ -204,7 +211,13 @@ class listener implements EventSubscriberInterface
 				case 'url':
 				case 'text':
 				case 'file':
-					$entry = '<input ' . $type . $name . $id . $placeholder . $mandatory . $size . $maxlength . $tabindex . $style . ' />';
+				    if($row['name'] === "Latitude" ) {
+				        $pattern = 'pattern="^\d{2}\.\d{3,}$"';
+                    }
+                    elseif ($row['name'] === 'Longitude') {
+                        $pattern = 'pattern="^-\d{3}\.\d{3,}$"';
+                    }
+					$entry = '<input ' . $type . $name . $id . $placeholder . $mandatory . $size . $maxlength . $tabindex . $style . $pattern .' />';
 				break;
 
 				case 'textbox':
